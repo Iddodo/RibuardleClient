@@ -1,8 +1,8 @@
 <script>
-    let lastUserInput = 'test';
     export let id;
-
     export let size;
+
+    export let character = '';
 </script>
 
 <div class="letter-box-wrapper" id="letter-box-{id}" style="--total-box-size: {size}">
@@ -45,7 +45,7 @@
     
 
     <div class="letter-box-character">
-        A
+        {character}
     </div>
     
     
@@ -56,14 +56,14 @@
 
 <style>
     :root {
-        --letter-box-size: 20%;
+        --letter-box-size: 25%;
     }
 
     .letter-box-character {
         grid-column: 2 / 4;    
         grid-row: 2 / 4;    
         
-        margin: 42%;
+        margin: 35%;
 
         font-size: 2em;
         
@@ -92,7 +92,6 @@
     .letter-box-clue  {
         width: var(--letter-box-size) * 1.2;
         height: var(--letter-box-size) * 1.2;
-        border-color: black;
     }
 
     .letter-box-wrapper {
