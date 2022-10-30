@@ -18,26 +18,26 @@ let size = "100px";
 <LetterBox id="letter-box-3" {size} character={ribuardle_words.topHorizontal[2]} />
 <LetterBox id="letter-box-4" {size} character={ribuardle_words.topHorizontal[3]} />
 <LetterBox id="letter-box-5" {size} character={ribuardle_words.topHorizontal[4]} />
-<LetterBox id="letter-box-6" {size} character={ribuardle_words.topHorizontal[0]} />
+<LetterBox id="letter-box-6" {size} character={ribuardle_words.rightVertical[1]} />
 <div class="letter-box-empty"></div>
-<LetterBox id="letter-box-8" {size} />
+<LetterBox id="letter-box-8" {size} character={ribuardle_words.midVertical[1]} />
 <div class="letter-box-empty"></div>
-<LetterBox id="letter-box-10" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-11" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-12" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-13" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-14" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-15" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-16" {size} character={ribuardle_words.topHorizontal[0]} />
+<LetterBox id="letter-box-10" {size} character={ribuardle_words.leftVertical[1]} />
+<LetterBox id="letter-box-11" {size} character={ribuardle_words.rightVertical[2]} />
+<LetterBox id="letter-box-12" {size} character={ribuardle_words.midHorizontal[1]} />
+<LetterBox id="letter-box-13" {size} character={ribuardle_words.midHorizontal[2]} />
+<LetterBox id="letter-box-14" {size} character={ribuardle_words.midHorizontal[3]} />
+<LetterBox id="letter-box-15" {size} character={ribuardle_words.midHorizontal[4]} />
+<LetterBox id="letter-box-16" {size} character={ribuardle_words.rightVertical[3]} />
 <div class="letter-box-empty"></div>
-<LetterBox id="letter-box-18" {size} character={ribuardle_words.topHorizontal[0]} />
+<LetterBox id="letter-box-18" {size} character={ribuardle_words.midVertical[3]} />
 <div class="letter-box-empty"></div>
-<LetterBox id="letter-box-20" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-21" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-22" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-23" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-24" {size} character={ribuardle_words.topHorizontal[0]} />
-<LetterBox id="letter-box-25" {size} character={ribuardle_words.topHorizontal[0]} />
+<LetterBox id="letter-box-20" {size} character={ribuardle_words.leftVertical[3]} />
+<LetterBox id="letter-box-21" {size} character={ribuardle_words.bottomHorizontal[0]} />
+<LetterBox id="letter-box-22" {size} character={ribuardle_words.bottomHorizontal[1]} />
+<LetterBox id="letter-box-23" {size} character={ribuardle_words.bottomHorizontal[2]} />
+<LetterBox id="letter-box-24" {size} character={ribuardle_words.bottomHorizontal[3]} />
+<LetterBox id="letter-box-25" {size} character={ribuardle_words.bottomHorizontal[4]} />
 </div>
 
 <style>
