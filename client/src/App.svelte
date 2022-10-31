@@ -6,15 +6,29 @@
     let total_turns = 10;
     let current_turn = 1;
     let current_character_in_turn = -1;
+    
 
-    let ribuardle_words = {
-        topHorizontal: ['', '', '' ,'', ''],
-        midHorizontal: ['', '', '' ,'', ''],
-        bottomHorizontal: ['', '', '' ,'', ''],
-        leftVertical: ['', '', '' ,'', ''],
-        midVertical: ['', '', '' ,'', ''],
-        rightVertical: ['', '', '' ,'', ''],
-    };
+
+    let ribuardle_words = {};
+
+    const ribuardle_labels = [
+        'topHorizontal',
+        'midHorizontal',
+        'bottomHorizontal',
+        'leftVertical',
+        'midVertical',
+        'rightVertical',
+    ];
+
+    ribuardle_labels.forEach((label) => {
+        ribuardle_words[label] = [
+                {letter: '', clues: []},
+                {letter: '', clues: []},
+                {letter: '', clues: []},
+                {letter: '', clues: []},
+                {letter: '', clues: []},
+            ];
+    });
 
     const intersections = {
         topHorizontal: [
@@ -64,13 +78,13 @@
     const hebrew_alphabet = "אבגדהוזחטיכלמנסעפצקרשת";
     
     const mapLetterKeyToHebrew = (code) => {
-        if (code == 188) return 'ת';
+        if (code == 188 || code == 62) return 'ת';
 
         return hebrew_map[code - 65];
     };
+    
 
     const onKeyDown = (e) => {
-        
         // Backspace detected
         if (e.keyCode == 8) {
             // Guard current character in turn from below
@@ -79,10 +93,10 @@
             }
 
             currentTermMapping(current_turn).forEach((word) => {
-                ribuardle_words[word][current_character_in_turn] = '';
+                ribuardle_words[word][current_character_in_turn].letter = '';
             
                 intersections[word].forEach((intersected) => {
-                    ribuardle_words[intersected.target][intersected.target_index] = ribuardle_words[word][intersected.own_index];
+                    ribuardle_words[intersected.target][intersected.target_index].letter = ribuardle_words[word][intersected.own_index].letter;
                 });
             });
             current_character_in_turn--;
@@ -92,16 +106,27 @@
 
         // Enter
         if (e.keyCode == 13) {
+            currentTermMapping(current_turn).forEach((word) => {
+                ribuardle_words[word].forEach((letter_obj, index) => {
+                   ribuardle_words[word][index].clues.push({ letter: letter_obj.letter, type: 'trololo' });
+                });
+
+                ribuardle_words[word] = ribuardle_words[word].map(letter_obj => {
+                    return {letter: '', clues: letter_obj.clues};
+                });
+                
+                intersections[word].forEach((intersected, index) => {
+                    ribuardle_words[intersected.target][intersected.target_index].letter = '';
+                });
+            });
+            ribuardle_words = ribuardle_words;
             current_turn++;
             current_character_in_turn = -1; 
-            for (let word in ribuardle_words) {
-                ribuardle_words[word] = ribuardle_words[word].map(letter => '');
-            }
             return;
         }
 
         // not a letter
-        if (!(e.keyCode >= 65 && e.keyCode <= 90 || e.keyCode == 188)) {
+        if (!(e.keyCode >= 65 && e.keyCode <= 90 || e.keyCode == 188 || e.keyCode == 62)) {
             return;
         }
         
@@ -119,10 +144,10 @@
         // Add character to words of current mapping
         current_character_in_turn++;
         currentTermMapping(current_turn).forEach((word) => {
-            ribuardle_words[word][current_character_in_turn] = ch;
+            ribuardle_words[word][current_character_in_turn].letter = ch;
             
             intersections[word].forEach((intersected) => {
-                ribuardle_words[intersected.target][intersected.target_index] = ribuardle_words[word][intersected.own_index];
+                ribuardle_words[intersected.target][intersected.target_index].letter = ribuardle_words[word][intersected.own_index].letter;
             });
         });
         ribuardle_words = ribuardle_words;

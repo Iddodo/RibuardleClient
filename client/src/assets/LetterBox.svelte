@@ -1,57 +1,27 @@
 <script>
+
+    import Clue from './Clue.svelte';
+
     export let id;
     export let size;
 
-    export let character = '';
+    export let character = {
+        letter: '',
+        clues: []
+    };
 </script>
 
 <div class="letter-box-wrapper" id="letter-box-{id}" style="--total-box-size: {size}">
+
+   {#each character.clues as clue}
     <div class="letter-box-clue">
-        C
+       <Clue type={clue.type} letter={clue.letter} />
     </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    <div class="letter-box-clue">
-        C
-    </div>
-    
+   {/each}
 
     <div class="letter-box-character">
-        {character}
+        {character.letter}
     </div>
-    
-    
-    
-    
-    
 </div>
 
 <style>
@@ -81,8 +51,11 @@
     .letter-box-wrapper {
         display: grid;
 
-        grid-template-columns: var(--letter-box-size) var(--letter-box-size) var(--letter-box-size) var(--letter-box-size);
-        grid-template-rows: var(--letter-box-size) var(--letter-box-size) var(--letter-box-size) var(--letter-box-size);
+        grid-template-columns: repeat(4, var(--letter-box-size));
+        grid-template-rows: repeat(4, var(--letter-box-size));
+        
+        width: var(--total-box-size);
+        height: var(--total-box-size);
         
 
         border: 1px black solid;
@@ -90,14 +63,13 @@
     }
     
     .letter-box-clue  {
-        width: var(--letter-box-size) * 1.2;
-        height: var(--letter-box-size) * 1.2;
+        width: var(--letter-box-size) * 1.1;
+        height: var(--letter-box-size) * 1.1;
+        
+        
+        border: 1px solid;
     }
 
-    .letter-box-wrapper {
-        width: var(--total-box-size);
-        height: var(--total-box-size);
-    }
 </style>
 
 <!--
